@@ -53,6 +53,8 @@ const projects: Project[] = [
     process: "Mapped data model with engineers, defined hierarchy, ran iterations on chart legibility and dark-mode contrast.",
     solution: "A modular KPI dashboard with drill-down patterns and live threat feeds — used in customer reviews.",
     gradient: "from-[oklch(0.65_0.22_295)] to-[oklch(0.82_0.16_200)]",
+    image: securityDashboard1.url,
+    images: [securityDashboard1.url, securityDashboard2.url],
   },
   {
     id: "3d-building",
