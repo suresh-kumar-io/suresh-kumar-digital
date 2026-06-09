@@ -10,6 +10,8 @@ import scl8 from "@/assets/scl-Page_8.jpg.asset.json";
 import scl9 from "@/assets/scl-Page_9.jpg.asset.json";
 import scl10 from "@/assets/scl-Page_10.jpg.asset.json";
 import scl11 from "@/assets/scl-Page_11.jpg.asset.json";
+import building3d1 from "@/assets/building-3d-1.png.asset.json";
+import building3d2 from "@/assets/building-3d-2.png.asset.json";
 
 type Project = {
   image?: string;
@@ -74,6 +76,8 @@ const projects: Project[] = [
     process: "Co-created with engineers, sketched spatial interactions, prototyped AR overlays integrating CAD data with live feeds.",
     solution: "An AR-ready 3D building view that maps live security events to physical space — selected for Siemens patent consideration.",
     gradient: "from-[oklch(0.7_0.2_250)] to-[oklch(0.65_0.22_295)]",
+    image: building3d1.url,
+    images: [building3d1.url, building3d2.url],
   },
   {
     id: "ai-dashboard",
