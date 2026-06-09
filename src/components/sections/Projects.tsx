@@ -12,8 +12,7 @@ import scl10 from "@/assets/scl-Page_10.jpg.asset.json";
 import scl11 from "@/assets/scl-Page_11.jpg.asset.json";
 import building3d1 from "@/assets/building-3d-1.png.asset.json";
 import building3d2 from "@/assets/building-3d-2.png.asset.json";
-import aiDashboard1 from "@/assets/ai-dashboard-1.png.asset.json";
-import aiDashboard2 from "@/assets/ai-dashboard-2.png.asset.json";
+import aiDashboard from "@/assets/ai-dashboard.png.asset.json";
 
 type Project = {
   image?: string;
@@ -91,8 +90,7 @@ const projects: Project[] = [
     process: "Sketched conversational + glanceable patterns, prototyped agent-assisted triage flows.",
     solution: "A predictive surface with AI-summarized incidents and one-click playbooks — presented at an internal innovation event.",
     gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.65_0.22_295)]",
-    image: aiDashboard1.url,
-    images: [aiDashboard1.url, aiDashboard2.url],
+    image: aiDashboard.url,
   },
 ];
 
