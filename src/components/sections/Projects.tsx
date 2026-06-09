@@ -4,6 +4,12 @@ import { SectionLabel } from "./About";
 import siveillancePortal from "@/assets/siveillance-portal.jpg.asset.json";
 import securityDashboard1 from "@/assets/security-dashboard-1.png.asset.json";
 import securityDashboard2 from "@/assets/security-dashboard-2.png.asset.json";
+import scl6 from "@/assets/scl-Page_6.jpg.asset.json";
+import scl7 from "@/assets/scl-Page_7.jpg.asset.json";
+import scl8 from "@/assets/scl-Page_8.jpg.asset.json";
+import scl9 from "@/assets/scl-Page_9.jpg.asset.json";
+import scl10 from "@/assets/scl-Page_10.jpg.asset.json";
+import scl11 from "@/assets/scl-Page_11.jpg.asset.json";
 
 type Project = {
   image?: string;
