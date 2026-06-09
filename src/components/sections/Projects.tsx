@@ -40,7 +40,7 @@ const projects: Project[] = [
   },
   {
     id: "sipass",
-    title: "SiPass Workflow Platform",
+    title: "Software Compatibility and Lifecycle",
     tag: "Access Management",
     year: "2023",
     tags: ["B2B", "Workflow", "Information Architecture"],
@@ -48,6 +48,8 @@ const projects: Project[] = [
     process: "Audited existing flows, ran stakeholder interviews, defined a single source of truth, validated with interactive prototypes.",
     solution: "A streamlined ordering experience with intelligent defaults and a scalable customer hub — reducing task time and onboarding friction.",
     gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.7_0.2_230)]",
+    image: scl6.url,
+    images: [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url],
   },
   {
     id: "security-dashboard",
