@@ -158,7 +158,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div className={`mt-6 aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
           <div className="relative h-full w-full">
             <div className="absolute inset-0 grid-bg opacity-30" />
-            <MockPreview kind={project.id} />
+            {project.image ? (
+              <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
+            ) : (
+              <MockPreview kind={project.id} />
+            )}
           </div>
         </div>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
