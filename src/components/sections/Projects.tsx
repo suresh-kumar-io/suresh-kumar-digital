@@ -2,9 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { SectionLabel } from "./About";
 import siveillancePortal from "@/assets/siveillance-portal.jpg.asset.json";
+import securityDashboard1 from "@/assets/security-dashboard-1.png.asset.json";
+import securityDashboard2 from "@/assets/security-dashboard-2.png.asset.json";
 
 type Project = {
   image?: string;
+  images?: string[];
   id: string;
   title: string;
   tag: string;
@@ -50,6 +53,8 @@ const projects: Project[] = [
     process: "Mapped data model with engineers, defined hierarchy, ran iterations on chart legibility and dark-mode contrast.",
     solution: "A modular KPI dashboard with drill-down patterns and live threat feeds — used in customer reviews.",
     gradient: "from-[oklch(0.65_0.22_295)] to-[oklch(0.82_0.16_200)]",
+    image: securityDashboard1.url,
+    images: [securityDashboard1.url, securityDashboard2.url],
   },
   {
     id: "3d-building",
@@ -155,16 +160,26 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <button onClick={onClose} className="absolute right-5 top-5 rounded-full bg-white/5 px-3 py-1 text-sm text-muted-foreground hover:text-foreground">Close ✕</button>
         <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{project.tag} · {project.year}</div>
         <h3 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">{project.title}</h3>
-        <div className={`mt-6 aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
-          <div className="relative h-full w-full">
-            <div className="absolute inset-0 grid-bg opacity-30" />
-            {project.image ? (
-              <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
-            ) : (
-              <MockPreview kind={project.id} />
-            )}
+        {project.images && project.images.length > 1 ? (
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {project.images.map((src, i) => (
+              <div key={i} className={`overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
+                <img src={src} alt={`${project.title} ${i + 1}`} className="h-full w-full object-cover" />
+              </div>
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className={`mt-6 aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
+            <div className="relative h-full w-full">
+              <div className="absolute inset-0 grid-bg opacity-30" />
+              {project.image ? (
+                <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
+              ) : (
+                <MockPreview kind={project.id} />
+              )}
+            </div>
+          </div>
+        )}
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {[
             { l: "Problem", v: project.problem },
