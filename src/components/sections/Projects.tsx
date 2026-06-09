@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { SectionLabel } from "./About";
+import siveillancePortal from "@/assets/siveillance-portal.jpg.asset.json";
 
 type Project = {
+  image?: string;
   id: string;
   title: string;
   tag: string;
@@ -17,7 +19,7 @@ type Project = {
 const projects: Project[] = [
   {
     id: "siveillance",
-    title: "Siemens Siveillance Control",
+    title: "Siemens Siveillance Unified Portal",
     tag: "Enterprise Security Platform",
     year: "2024",
     tags: ["Dashboard", "B2B", "Design System", "Workflow"],
@@ -25,6 +27,7 @@ const projects: Project[] = [
     process: "Mapped operator workflows, ran usability discussions, built modular components on the Siemens DS, prototyped in Figma.",
     solution: "A real-time situation dashboard with prioritized alerts, smart filtering, and a calmer visual hierarchy — cutting decision time and operator fatigue.",
     gradient: "from-[oklch(0.7_0.2_230)] to-[oklch(0.65_0.22_295)]",
+    image: siveillancePortal.url,
   },
   {
     id: "sipass",
@@ -99,7 +102,11 @@ export function Projects() {
             >
               <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
                 <div className="absolute inset-0 grid-bg opacity-30" />
-                <MockPreview kind={p.id} />
+                {p.image ? (
+                  <img src={p.image} alt={p.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                ) : (
+                  <MockPreview kind={p.id} />
+                )}
                 <motion.div
                   className="absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
@@ -151,7 +158,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div className={`mt-6 aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
           <div className="relative h-full w-full">
             <div className="absolute inset-0 grid-bg opacity-30" />
-            <MockPreview kind={project.id} />
+            {project.image ? (
+              <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
+            ) : (
+              <MockPreview kind={project.id} />
+            )}
           </div>
         </div>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
