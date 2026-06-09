@@ -2,9 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { SectionLabel } from "./About";
 import siveillancePortal from "@/assets/siveillance-portal.jpg.asset.json";
+import securityDashboard1 from "@/assets/security-dashboard-1.png.asset.json";
+import securityDashboard2 from "@/assets/security-dashboard-2.png.asset.json";
 
 type Project = {
   image?: string;
+  images?: string[];
   id: string;
   title: string;
   tag: string;
