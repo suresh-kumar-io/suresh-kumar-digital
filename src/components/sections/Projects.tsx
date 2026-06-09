@@ -12,6 +12,8 @@ import scl10 from "@/assets/scl-Page_10.jpg.asset.json";
 import scl11 from "@/assets/scl-Page_11.jpg.asset.json";
 import building3d1 from "@/assets/building-3d-1.png.asset.json";
 import building3d2 from "@/assets/building-3d-2.png.asset.json";
+import aiDashboard1 from "@/assets/ai-dashboard-1.png.asset.json";
+import aiDashboard2 from "@/assets/ai-dashboard-2.png.asset.json";
 
 type Project = {
   image?: string;
