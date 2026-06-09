@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { SectionLabel } from "./About";
+import siveillancePortal from "@/assets/siveillance-portal.jpg.asset.json";
 
 type Project = {
+  image?: string;
   id: string;
   title: string;
   tag: string;
