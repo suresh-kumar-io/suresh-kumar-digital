@@ -10,6 +10,8 @@ import scl8 from "@/assets/scl-Page_8.jpg.asset.json";
 import scl9 from "@/assets/scl-Page_9.jpg.asset.json";
 import scl10 from "@/assets/scl-Page_10.jpg.asset.json";
 import scl11 from "@/assets/scl-Page_11.jpg.asset.json";
+import building3d1 from "@/assets/building-3d-1.png.asset.json";
+import building3d2 from "@/assets/building-3d-2.png.asset.json";
 
 type Project = {
   image?: string;
