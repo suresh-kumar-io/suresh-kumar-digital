@@ -76,6 +76,8 @@ const projects: Project[] = [
     process: "Co-created with engineers, sketched spatial interactions, prototyped AR overlays integrating CAD data with live feeds.",
     solution: "An AR-ready 3D building view that maps live security events to physical space — selected for Siemens patent consideration.",
     gradient: "from-[oklch(0.7_0.2_250)] to-[oklch(0.65_0.22_295)]",
+    image: building3d1.url,
+    images: [building3d1.url, building3d2.url],
   },
   {
     id: "ai-dashboard",
