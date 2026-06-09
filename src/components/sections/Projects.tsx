@@ -19,7 +19,7 @@ type Project = {
 const projects: Project[] = [
   {
     id: "siveillance",
-    title: "Siemens Siveillance Control",
+    title: "Siemens Siveillance Unified Portal",
     tag: "Enterprise Security Platform",
     year: "2024",
     tags: ["Dashboard", "B2B", "Design System", "Workflow"],
@@ -27,6 +27,7 @@ const projects: Project[] = [
     process: "Mapped operator workflows, ran usability discussions, built modular components on the Siemens DS, prototyped in Figma.",
     solution: "A real-time situation dashboard with prioritized alerts, smart filtering, and a calmer visual hierarchy — cutting decision time and operator fatigue.",
     gradient: "from-[oklch(0.7_0.2_230)] to-[oklch(0.65_0.22_295)]",
+    image: siveillancePortal.url,
   },
   {
     id: "sipass",
