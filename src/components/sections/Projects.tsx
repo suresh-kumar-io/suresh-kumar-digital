@@ -102,7 +102,11 @@ export function Projects() {
             >
               <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
                 <div className="absolute inset-0 grid-bg opacity-30" />
-                <MockPreview kind={p.id} />
+                {p.image ? (
+                  <img src={p.image} alt={p.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                ) : (
+                  <MockPreview kind={p.id} />
+                )}
                 <motion.div
                   className="absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
