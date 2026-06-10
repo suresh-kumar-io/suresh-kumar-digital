@@ -126,11 +126,18 @@ export function Projects() {
               <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
                 <div className="absolute inset-0 grid-bg opacity-30" />
                 {p.image ? (
-                  <img src={p.image} alt={p.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${p.fit === "contain" ? "object-contain p-4" : "object-cover"}`}
+                  />
                 ) : (
                   <MockPreview kind={p.id} />
                 )}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                {p.fit !== "contain" && (
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                )}
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
