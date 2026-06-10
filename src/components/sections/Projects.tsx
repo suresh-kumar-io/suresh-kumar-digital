@@ -94,6 +94,7 @@ const projects: Project[] = [
     solution: "A predictive surface with AI-summarized incidents and one-click playbooks — presented at an internal innovation event.",
     gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.65_0.22_295)]",
     image: aiDashboard.url,
+    fit: "contain",
   },
 ];
 
