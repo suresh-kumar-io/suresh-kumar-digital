@@ -67,7 +67,7 @@ export function About() {
                 viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="glass relative overflow-hidden rounded-2xl p-5"
               >
-                <div className="font-display text-4xl font-semibold text-gradient">
+                <div className="font-display text-4xl font-semibold text-gradient-accent">
                   <Counter to={st.v} suffix={st.s} />
                 </div>
                 <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{st.l}</div>
