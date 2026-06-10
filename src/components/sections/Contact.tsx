@@ -6,9 +6,7 @@ import { MagneticButton } from "../MagneticButton";
 const channels = [
   { l: "Email", v: "sureshmanohar5597@gmail.com", h: "mailto:sureshmanohar5597@gmail.com" },
   { l: "Phone", v: "+91 87784 92332", h: "tel:+918778492332" },
-  { l: "LinkedIn", v: "linkedin.com/in/sureshkumar", h: "#" },
-  { l: "Behance", v: "behance.net/sureshkumar", h: "#" },
-  { l: "Dribbble", v: "dribbble.com/sureshkumar", h: "#" },
+  { l: "LinkedIn", v: "linkedin.com/in/sureshkumarm539", h: "https://www.linkedin.com/in/sureshkumarm539" },
 ];
 
 export function Contact() {
