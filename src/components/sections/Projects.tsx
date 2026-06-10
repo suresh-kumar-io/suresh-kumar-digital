@@ -54,6 +54,7 @@ const projects: Project[] = [
     gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.7_0.2_230)]",
     image: scl6.url,
     images: [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url],
+    fit: "contain",
   },
   {
     id: "security-dashboard",
