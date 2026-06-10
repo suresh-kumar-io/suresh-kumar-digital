@@ -34,7 +34,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
           className="font-display text-5xl font-semibold leading-[0.95] sm:text-7xl md:text-8xl"
         >
-          <span className="block text-gradient">Suresh Kumar</span>
+          <span className="block text-gradient-accent">Suresh Kumar</span>
           <span className="mt-3 block h-[1.1em] overflow-hidden text-2xl text-muted-foreground sm:text-3xl md:text-4xl">
             <motion.span
               key={idx}
