@@ -26,6 +26,7 @@ type Project = {
   process: string;
   solution: string;
   gradient: string;
+  fit?: "cover" | "contain";
 };
 
 const projects: Project[] = [
