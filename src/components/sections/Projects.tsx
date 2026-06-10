@@ -26,6 +26,7 @@ type Project = {
   process: string;
   solution: string;
   gradient: string;
+  fit?: "cover" | "contain";
 };
 
 const projects: Project[] = [
@@ -53,6 +54,7 @@ const projects: Project[] = [
     gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.7_0.2_230)]",
     image: scl6.url,
     images: [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url],
+    fit: "contain",
   },
   {
     id: "security-dashboard",
@@ -66,6 +68,7 @@ const projects: Project[] = [
     gradient: "from-[oklch(0.65_0.22_295)] to-[oklch(0.82_0.16_200)]",
     image: securityDashboard1.url,
     images: [securityDashboard1.url, securityDashboard2.url],
+    fit: "contain",
   },
   {
     id: "3d-building",
@@ -91,6 +94,7 @@ const projects: Project[] = [
     solution: "A predictive surface with AI-summarized incidents and one-click playbooks — presented at an internal innovation event.",
     gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.65_0.22_295)]",
     image: aiDashboard.url,
+    fit: "contain",
   },
 ];
 
@@ -122,11 +126,18 @@ export function Projects() {
               <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
                 <div className="absolute inset-0 grid-bg opacity-30" />
                 {p.image ? (
-                  <img src={p.image} alt={p.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${p.fit === "contain" ? "object-contain p-4" : "object-cover"}`}
+                  />
                 ) : (
                   <MockPreview kind={p.id} />
                 )}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                {p.fit !== "contain" && (
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                )}
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
@@ -176,7 +187,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {project.images.map((src, i) => (
               <div key={i} className={`overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
-                <img src={src} alt={`${project.title} ${i + 1}`} className="h-full w-full object-cover" />
+                <img src={src} alt={`${project.title} ${i + 1}`} className={`h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
               </div>
             ))}
           </div>
@@ -185,7 +196,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             <div className="relative h-full w-full">
               <div className="absolute inset-0 grid-bg opacity-30" />
               {project.image ? (
-                <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
+                <img src={project.image} alt={project.title} className={`absolute inset-0 h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
               ) : (
                 <MockPreview kind={project.id} />
               )}
