@@ -42,7 +42,7 @@ export function Navbar() {
       <nav className="flex items-center justify-between gap-4">
         <a href="#hero" className="flex items-center gap-2 font-display text-base font-semibold">
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-br from-[var(--cyan)] to-[var(--electric)] glow" />
-          <span className="text-foreground">Suresh<span className="text-gradient-accent">.</span></span>
+          <span className="text-foreground">SK<span className="text-gradient-accent">.</span></span>
         </a>
         <ul className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
