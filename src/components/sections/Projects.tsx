@@ -68,6 +68,7 @@ const projects: Project[] = [
     gradient: "from-[oklch(0.65_0.22_295)] to-[oklch(0.82_0.16_200)]",
     image: securityDashboard1.url,
     images: [securityDashboard1.url, securityDashboard2.url],
+    fit: "contain",
   },
   {
     id: "3d-building",
