@@ -187,7 +187,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {project.images.map((src, i) => (
               <div key={i} className={`overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
-                <img src={src} alt={`${project.title} ${i + 1}`} className="h-full w-full object-cover" />
+                <img src={src} alt={`${project.title} ${i + 1}`} className={`h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
               </div>
             ))}
           </div>
@@ -196,7 +196,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             <div className="relative h-full w-full">
               <div className="absolute inset-0 grid-bg opacity-30" />
               {project.image ? (
-                <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
+                <img src={project.image} alt={project.title} className={`absolute inset-0 h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
               ) : (
                 <MockPreview kind={project.id} />
               )}
