@@ -2,5 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "vite build",
   "installCommand": "npm install",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/__l5e/:path*",
+      "destination": "https://project--bad5d138-6abe-4967-b3a0-88711882c6c9.lovable.app/__l5e/:path*"
+    }
+  ]
 }
