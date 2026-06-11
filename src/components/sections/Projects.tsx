@@ -123,20 +123,20 @@ export function Projects() {
               whileHover={{ y: -6 }}
               className={`group glass-strong relative flex flex-col overflow-hidden rounded-3xl text-left ${i === 0 || i === 3 ? "md:col-span-2" : ""}`}
             >
-              <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
-                <div className="absolute inset-0 grid-bg opacity-30" />
+              <div className={`relative aspect-[4/3] overflow-hidden ${p.fit === "contain" ? "bg-[oklch(0.96_0.01_250)]" : `bg-gradient-to-br ${p.gradient}`}`}>
+                {p.fit !== "contain" && <div className="absolute inset-0 grid-bg opacity-30" />}
                 {p.image ? (
                   <img
                     src={p.image}
                     alt={p.title}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${p.fit === "contain" ? "object-contain p-4" : "object-cover"}`}
+                    className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${p.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover"}`}
                   />
                 ) : (
                   <MockPreview kind={p.id} />
                 )}
                 {p.fit !== "contain" && (
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent" />
                 )}
               </div>
               <div className="flex flex-1 flex-col p-6">
@@ -186,15 +186,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         {project.images && project.images.length > 1 ? (
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {project.images.map((src, i) => (
-              <div key={i} className={`overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
+              <div key={i} className={`aspect-[4/3] overflow-hidden rounded-2xl ${project.fit === "contain" ? "bg-[oklch(0.96_0.01_250)]" : `bg-gradient-to-br ${project.gradient}`}`}>
                 <img src={src} alt={`${project.title} ${i + 1}`} className={`h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
               </div>
             ))}
           </div>
         ) : (
-          <div className={`mt-6 aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${project.gradient}`}>
+          <div className={`mt-6 aspect-[16/9] overflow-hidden rounded-2xl ${project.fit === "contain" ? "bg-[oklch(0.96_0.01_250)]" : `bg-gradient-to-br ${project.gradient}`}`}>
             <div className="relative h-full w-full">
-              <div className="absolute inset-0 grid-bg opacity-30" />
+              {project.fit !== "contain" && <div className="absolute inset-0 grid-bg opacity-30" />}
               {project.image ? (
                 <img src={project.image} alt={project.title} className={`absolute inset-0 h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
               ) : (
