@@ -7,6 +7,7 @@ const groups = [
   { t: "Tools", items: ["Figma", "Adobe XD", "Revit", "AutoCAD", "SolidWorks", "Creo"] },
   { t: "Engineering", items: ["BIM & CAD", "Structural Modelling", "PLM", "ASME / ANSI", "Technical Submittals", "AR / 3D Concepts"] },
   { t: "Collaboration", items: ["Stakeholder Comms", "Cross-functional Teams", "Design Reviews", "Agile Workflow", "User Research", "Requirement Gathering"] },
+  { t: "Networking (L2/L3 Support)", items: ["IPsec Tunneling", "NAT", "cRSP", "BMSaaS", "Desigo Solution", "Network Troubleshooting"] },
 ];
 
 export function Skills() {
