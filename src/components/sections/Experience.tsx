@@ -4,44 +4,44 @@ import { SectionLabel } from "./About";
 const items = [
   {
     co: "Siemens Technology and Services",
-    role: "UI/UX Designer",
+    role: "Senior UI/UX Designer",
     when: "May 2022 — Present",
     where: "Chennai, India",
     points: [
-      "Designed enterprise B2B & B2C interfaces for Siveillance Control and SiPass.",
-      "Shipped dashboards, ordering workflows and customer-management surfaces.",
-      "Built interactive prototypes in Figma and collaborated across product, engineering and stakeholders.",
-      "Contributed to a patent-selected 3D building visualization concept with AR.",
+      "Design enterprise B2B and B2C interfaces for Siveillance Control and SiPass.",
+      "Ship dashboards, ordering workflows, and customer-management surfaces used in production.",
+      "Build interactive prototypes in Figma and align product, engineering, and stakeholders.",
+      "Contributed to a patent-filed 3D building visualization concept with AR.",
     ],
   },
   {
     co: "Siemens Technology and Services",
     role: "Engineering Solutions Projects",
-    when: "Current · Siemens",
+    when: "Current",
     where: "Chennai, India",
     points: [
-      "Delivered graphics commissioning solutions for Siveillance Control using Siemens PISM & AutoCAD.",
-      "Designed alarm/sensor visualization, mapping, and configuration for fire & safety systems.",
-      "Led design execution using parametric modeling, feature-based design, and engineering best practices.",
-      "Collaborated on 3D BIM integration for visualization, surveillance, and fire-safety compliance.",
-      "Ensured compliance with European standards and customer requirements.",
-      "Developed AR-enabled 3D BIM concept for fire protection; contributed to patent-filed innovation.",
-      "Independently delivered visualization engineering, attribute configuration, KML generation, and PDF export capabilities.",
+      "Deliver graphics commissioning for Siveillance Control using Siemens PISM and AutoCAD.",
+      "Design alarm and sensor visualization, mapping, and configuration for fire and safety systems.",
+      "Lead execution using parametric modeling and feature-based design.",
+      "Contribute to 3D BIM integration for visualization, surveillance, and fire-safety compliance.",
+      "Ensure compliance with European standards and customer requirements.",
+      "Developed an AR-enabled 3D BIM fire-protection concept selected for patent filing.",
+      "Own visualization engineering, attribute configuration, KML generation, and PDF export.",
     ],
   },
   {
     co: "Siemens Technology and Services",
-    role: "cRSP Services – L2/L3 Network Support",
-    when: "Current · Siemens",
+    role: "cRSP Services — L2 / L3 Network Support",
+    when: "Current",
     where: "Remote · EMEA / US",
     points: [
       "Self-trained and transitioned into L3 networking within 60 days.",
-      "Specialized in IPsec architecture, cRSP, BMSaaS, Desigo connectivity, and network diagnostics.",
-      "Resolved 50+ complex EMEA/US L3 tickets with zero escalations.",
+      "Specialize in IPsec, cRSP, BMSaaS, Desigo connectivity, and network diagnostics.",
+      "Resolved 50+ complex EMEA and US L3 tickets with zero escalations.",
       "Led Scalance S615 onboarding during FortiGate migration projects.",
-      "Implemented and supported IPsec, cRSP, DCCaaS, and Desigo connectivity solutions.",
-      "Created troubleshooting playbooks and reusable automation scripts for IPsec tunnel deployment.",
-      "Experienced in NAT, secure connectivity, network troubleshooting, and customer support operations.",
+      "Implemented and supported IPsec, cRSP, DCCaaS, and Desigo connectivity.",
+      "Authored troubleshooting playbooks and reusable automation for IPsec tunnel deployment.",
+      "Experienced in NAT, secure connectivity, diagnostics, and customer support operations.",
     ],
   },
   {
@@ -51,7 +51,7 @@ const items = [
     where: "Bengaluru, India",
     points: [
       "Partnered with European telecom clients on technical design and visualization.",
-      "Produced layouts, workflow diagrams and equipment plans in AutoCAD.",
+      "Produced layouts, workflow diagrams, and equipment plans in AutoCAD.",
       "Led design reviews and maintained delivery quality.",
     ],
   },
@@ -61,7 +61,7 @@ const items = [
     when: "Oct 2019 — Feb 2021",
     where: "Chennai, India",
     points: [
-      "Executed US telecom projects with structural plans, elevations and site layouts.",
+      "Delivered US telecom projects with structural plans, elevations, and site layouts.",
       "Built dynamic AutoCAD blocks and maintained a reusable component library.",
       "Authored schematics and specifications for specialized telecom equipment.",
     ],
@@ -70,46 +70,46 @@ const items = [
 
 export function Experience() {
   return (
-    <section id="experience" className="relative px-6 py-32">
-      <div className="mx-auto max-w-5xl">
-        <SectionLabel>04 · Journey</SectionLabel>
-        <h2 className="mt-6 font-display text-4xl font-semibold sm:text-5xl">
-          A path built across <span className="text-gradient-accent">engineering & design</span>.
+    <section id="experience" className="relative border-t border-black/10 px-6 py-32 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <SectionLabel>04 — Experience</SectionLabel>
+        <h2 className="font-display mt-8 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
+          A career built across engineering, design, and networks.
         </h2>
 
-        <div className="relative mt-16">
-          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-[var(--cyan)] via-[var(--electric)] to-transparent md:left-1/2" />
-          <div className="space-y-16">
-            {items.map((it, i) => (
-              <motion.div
-                key={it.co}
-                initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7 }}
-                className={`relative pl-12 md:grid md:grid-cols-2 md:gap-12 md:pl-0 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}
-              >
-                <motion.div
-                  initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  className="absolute left-2 top-2 h-4 w-4 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--cyan)] to-[var(--electric)] glow md:left-1/2"
-                />
-                <div className={i % 2 ? "md:text-left md:pl-12" : "md:text-right md:pr-12"}>
-                  <div className="text-xs uppercase tracking-widest text-[var(--cyan)]">{it.when}</div>
-                  <h3 className="mt-2 font-display text-2xl font-semibold">{it.role}</h3>
-                  <div className="text-muted-foreground">{it.co} · {it.where}</div>
+        <div className="mt-16 space-y-12">
+          {items.map((it, i) => (
+            <motion.article
+              key={`${it.co}-${it.role}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="grid gap-6 border-t border-black/15 pt-8 md:grid-cols-12"
+            >
+              <div className="md:col-span-4">
+                <div className="text-[10px] uppercase tracking-[0.3em] text-black/60">
+                  {it.when}
                 </div>
-                <div className={i % 2 ? "mt-4 md:mt-0 md:pr-12 md:text-right" : "mt-4 md:mt-0 md:pl-12"}>
-                  <ul className="glass space-y-2 rounded-2xl p-5 text-sm text-muted-foreground">
-                    {it.points.map((p) => (
-                      <li key={p} className="flex gap-2 text-left">
-                        <span className="mt-1 inline-block h-1 w-1 shrink-0 rounded-full bg-[var(--cyan)]" />
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <h3 className="font-display mt-3 text-xl font-semibold text-black md:text-2xl">
+                  {it.role}
+                </h3>
+                <div className="mt-2 text-sm text-black/70">
+                  {it.co} · {it.where}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+              <div className="md:col-span-8">
+                <ul className="space-y-3 text-sm leading-relaxed text-black">
+                  {it.points.map((p) => (
+                    <li key={p} className="flex gap-3">
+                      <span className="mt-2 h-px w-4 shrink-0 bg-black" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
