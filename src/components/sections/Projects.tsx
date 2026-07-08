@@ -1,31 +1,20 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import { SectionLabel } from "./About";
 import siveillancePortal from "@/assets/siveillance-portal.jpg.asset.json";
 import securityDashboard1 from "@/assets/security-dashboard-1.png.asset.json";
-import securityDashboard2 from "@/assets/security-dashboard-2.png.asset.json";
 import scl6 from "@/assets/scl-Page_6.jpg.asset.json";
-import scl7 from "@/assets/scl-Page_7.jpg.asset.json";
-import scl8 from "@/assets/scl-Page_8.jpg.asset.json";
-import scl9 from "@/assets/scl-Page_9.jpg.asset.json";
-import scl10 from "@/assets/scl-Page_10.jpg.asset.json";
-import scl11 from "@/assets/scl-Page_11.jpg.asset.json";
 import building3d1 from "@/assets/building-3d-1.png.asset.json";
-import building3d2 from "@/assets/building-3d-2.png.asset.json";
 import aiDashboard from "@/assets/ai-dashboard.png.asset.json";
 
 type Project = {
-  image?: string;
-  images?: string[];
+  image: string;
   id: string;
   title: string;
   tag: string;
   year: string;
-  tags: string[];
-  problem: string;
-  process: string;
+  challenge: string;
   solution: string;
-  gradient: string;
+  result: string;
   fit?: "cover" | "contain";
 };
 
@@ -35,25 +24,25 @@ const projects: Project[] = [
     title: "Siemens Siveillance Unified Portal",
     tag: "Enterprise Security Platform",
     year: "2024",
-    tags: ["Dashboard", "B2B", "Design System", "Workflow"],
-    problem: "Security operators needed a unified command center to monitor distributed sites without context-switching.",
-    process: "Mapped operator workflows, ran usability discussions, built modular components on the Siemens DS, prototyped in Figma.",
-    solution: "A real-time situation dashboard with prioritized alerts, smart filtering, and a calmer visual hierarchy — cutting decision time and operator fatigue.",
-    gradient: "from-[oklch(0.7_0.2_230)] to-[oklch(0.65_0.22_295)]",
+    challenge:
+      "Security operators managed distributed sites across fragmented tools, delaying critical decisions.",
+    solution:
+      "Designed a unified command center with prioritized alerts, modular components, and a calmer information hierarchy.",
+    result: "Reduced operator decision time and lowered alert fatigue in production deployments.",
     image: siveillancePortal.url,
+    fit: "cover",
   },
   {
     id: "sipass",
-    title: "Software Compatibility and Lifecycle",
+    title: "Software Compatibility & Lifecycle",
     tag: "Access Management",
     year: "2023",
-    tags: ["B2B", "Workflow", "Information Architecture"],
-    problem: "Admin teams struggled with fragmented ordering and customer-management flows across regions.",
-    process: "Audited existing flows, ran stakeholder interviews, defined a single source of truth, validated with interactive prototypes.",
-    solution: "A streamlined ordering experience with intelligent defaults and a scalable customer hub — reducing task time and onboarding friction.",
-    gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.7_0.2_230)]",
+    challenge:
+      "Admin teams navigated inconsistent ordering and customer flows across regions.",
+    solution:
+      "Consolidated the experience into a single source of truth with intelligent defaults and a scalable customer hub.",
+    result: "Cut task completion time and simplified onboarding for regional administrators.",
     image: scl6.url,
-    images: [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url],
     fit: "contain",
   },
   {
@@ -61,193 +50,103 @@ const projects: Project[] = [
     title: "Siemens Security Dashboard",
     tag: "Monitoring · KPI Visualization",
     year: "2024",
-    tags: ["Dashboard", "Data Viz", "Responsive"],
-    problem: "Stakeholders lacked a single-pane view of security KPIs across multi-tenant deployments.",
-    process: "Mapped data model with engineers, defined hierarchy, ran iterations on chart legibility and dark-mode contrast.",
-    solution: "A modular KPI dashboard with drill-down patterns and live threat feeds — used in customer reviews.",
-    gradient: "from-[oklch(0.65_0.22_295)] to-[oklch(0.82_0.16_200)]",
+    challenge:
+      "Stakeholders lacked a single view of security KPIs across multi-tenant deployments.",
+    solution:
+      "Built a modular dashboard with drill-down patterns, live threat feeds, and high-contrast dark-mode visualization.",
+    result: "Adopted in customer reviews as the reference view for portfolio-wide security posture.",
     image: securityDashboard1.url,
-    images: [securityDashboard1.url, securityDashboard2.url],
     fit: "contain",
   },
   {
     id: "3d-building",
-    title: "3D Building Visualization · AR",
-    tag: "Patent-Selected Concept",
+    title: "3D Building Visualization with AR",
+    tag: "Patent-Filed Concept",
     year: "2024",
-    tags: ["3D", "AR", "Innovation", "Concept"],
-    problem: "Operators needed spatial awareness of security events across multi-floor buildings.",
-    process: "Co-created with engineers, sketched spatial interactions, prototyped AR overlays integrating CAD data with live feeds.",
-    solution: "An AR-ready 3D building view that maps live security events to physical space — selected for Siemens patent consideration.",
-    gradient: "from-[oklch(0.7_0.2_250)] to-[oklch(0.65_0.22_295)]",
+    challenge:
+      "Operators needed spatial awareness of security events across multi-floor facilities.",
+    solution:
+      "Prototyped an AR-ready 3D view mapping live security events to CAD building data.",
+    result: "Selected for Siemens patent consideration as a next-generation situational awareness concept.",
     image: building3d1.url,
-    images: [building3d1.url, building3d2.url],
+    fit: "cover",
   },
   {
     id: "ai-dashboard",
-    title: "AI Security Dashboard · Concept",
-    tag: "Hackathon · Innovation",
+    title: "AI Security Dashboard",
+    tag: "Innovation Concept",
     year: "2024",
-    tags: ["AI", "Concept", "Internal Hackathon"],
-    problem: "How might AI proactively surface anomalies in industrial security telemetry?",
-    process: "Sketched conversational + glanceable patterns, prototyped agent-assisted triage flows.",
-    solution: "A predictive surface with AI-summarized incidents and one-click playbooks — presented at an internal innovation event.",
-    gradient: "from-[oklch(0.82_0.16_200)] to-[oklch(0.65_0.22_295)]",
+    challenge:
+      "Analysts needed proactive surfacing of anomalies in industrial security telemetry.",
+    solution:
+      "Prototyped an AI-assisted triage surface with summarized incidents and one-click playbooks.",
+    result: "Presented at an internal Siemens innovation event as a forward-looking capability.",
     image: aiDashboard.url,
     fit: "contain",
   },
 ];
 
 export function Projects() {
-  const [active, setActive] = useState<Project | null>(null);
   return (
-    <section id="work" className="relative px-6 py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionLabel>03 · Selected Work</SectionLabel>
-        <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-4xl font-semibold sm:text-5xl">
-            Case studies that <span className="text-gradient-accent">scale</span>.
-          </h2>
-          <p className="max-w-md text-muted-foreground">
-            Enterprise products, security platforms and conceptual work that shaped my craft.
-          </p>
-        </div>
+    <section id="work" className="relative border-t border-black/10 px-6 py-32 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <SectionLabel>03 — Selected Work</SectionLabel>
+        <h2 className="font-display mt-8 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
+          Case studies from enterprise security and operations.
+        </h2>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-20 space-y-24">
           {projects.map((p, i) => (
-            <motion.button
+            <motion.article
               key={p.id}
-              onClick={() => setActive(p)}
-              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: i * 0.08 }}
-              whileHover={{ y: -6 }}
-              className={`group glass-strong relative flex flex-col overflow-hidden rounded-3xl text-left ${i === 0 || i === 3 ? "md:col-span-2" : ""}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: i * 0.04 }}
+              className="grid gap-10 md:grid-cols-12 md:gap-12"
             >
-              <div className={`relative aspect-[4/3] overflow-hidden ${p.fit === "contain" ? "bg-[oklch(0.96_0.01_250)]" : `bg-gradient-to-br ${p.gradient}`}`}>
-                {p.fit !== "contain" && <div className="absolute inset-0 grid-bg opacity-30" />}
-                {p.image ? (
+              <div className="md:col-span-7">
+                <div className="relative aspect-[4/3] overflow-hidden border border-black/15 bg-[#DFDFD9]">
                   <img
                     src={p.image}
                     alt={p.title}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${p.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover"}`}
+                    className={`absolute inset-0 h-full w-full ${
+                      p.fit === "contain" ? "object-contain p-4" : "object-cover"
+                    }`}
                   />
-                ) : (
-                  <MockPreview kind={p.id} />
-                )}
-                {p.fit !== "contain" && (
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent" />
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0">
-                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{p.tag} · {p.year}</div>
-                    <h3 className="mt-1.5 font-display text-xl font-semibold text-foreground sm:text-2xl">{p.title}</h3>
-                  </div>
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--cyan)] to-[var(--electric)] text-[var(--primary-foreground)] transition-transform group-hover:rotate-45">
-                    →
-                  </div>
-                </div>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {p.tags.map((t) => (
-                    <span key={t} className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-muted-foreground">{t}</span>
-                  ))}
                 </div>
               </div>
-            </motion.button>
+
+              <div className="md:col-span-5">
+                <div className="text-[10px] uppercase tracking-[0.3em] text-black/60">
+                  {p.tag} · {p.year}
+                </div>
+                <h3 className="font-display mt-3 text-2xl font-semibold leading-tight text-black md:text-3xl">
+                  {p.title}
+                </h3>
+
+                <dl className="mt-8 space-y-6 text-sm leading-relaxed text-black">
+                  <Row label="Challenge" value={p.challenge} />
+                  <Row label="Solution" value={p.solution} />
+                  <Row label="Key Result" value={p.result} />
+                </dl>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
-
-      <AnimatePresence>
-        {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
-      </AnimatePresence>
     </section>
   );
 }
 
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+function Row({ label, value }: { label: string; value: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      onClick={onClose}
-      className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-6 backdrop-blur-md"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 30 }}
-        transition={{ type: "spring", stiffness: 220, damping: 24 }}
-        onClick={(e) => e.stopPropagation()}
-        className="glass-strong relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl p-8"
-      >
-        <button onClick={onClose} className="absolute right-5 top-5 rounded-full bg-white/5 px-3 py-1 text-sm text-muted-foreground hover:text-foreground">Close ✕</button>
-        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{project.tag} · {project.year}</div>
-        <h3 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">{project.title}</h3>
-        {project.images && project.images.length > 1 ? (
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {project.images.map((src, i) => (
-              <div key={i} className={`aspect-[4/3] overflow-hidden rounded-2xl ${project.fit === "contain" ? "bg-[oklch(0.96_0.01_250)]" : `bg-gradient-to-br ${project.gradient}`}`}>
-                <img src={src} alt={`${project.title} ${i + 1}`} className={`h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className={`mt-6 aspect-[16/9] overflow-hidden rounded-2xl ${project.fit === "contain" ? "bg-[oklch(0.96_0.01_250)]" : `bg-gradient-to-br ${project.gradient}`}`}>
-            <div className="relative h-full w-full">
-              {project.fit !== "contain" && <div className="absolute inset-0 grid-bg opacity-30" />}
-              {project.image ? (
-                <img src={project.image} alt={project.title} className={`absolute inset-0 h-full w-full ${project.fit === "contain" ? "object-contain p-3" : "object-cover"}`} />
-              ) : (
-                <MockPreview kind={project.id} />
-              )}
-            </div>
-          </div>
-        )}
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {[
-            { l: "Problem", v: project.problem },
-            { l: "Process", v: project.process },
-            { l: "Solution", v: project.solution },
-          ].map((b) => (
-            <div key={b.l}>
-              <div className="text-[10px] uppercase tracking-widest text-[var(--cyan)]">{b.l}</div>
-              <p className="mt-2 text-sm text-muted-foreground">{b.v}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-function MockPreview({ kind }: { kind: string }) {
-  if (kind === "3d-building") {
-    return (
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          animate={{ rotateY: [0, 360] }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          style={{ transformStyle: "preserve-3d", perspective: 800 }}
-          className="relative h-40 w-32"
-        >
-          {[0, 1, 2, 3, 4].map((i) => (
-            <div key={i} className="absolute inset-x-0 mx-auto h-6 w-28 rounded border border-white/40 bg-white/10 backdrop-blur" style={{ top: i * 28 }} />
-          ))}
-        </motion.div>
-      </div>
-    );
-  }
-  return (
-    <div className="absolute inset-0 flex items-end justify-center p-8">
-      <div className="grid w-full max-w-md grid-cols-3 gap-2 opacity-90">
-        {Array.from({ length: 9 }).map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05, duration: 0.5 }}
-            className="h-12 rounded-lg border border-white/20 bg-white/10 backdrop-blur"
-          />
-        ))}
-      </div>
+    <div className="border-t border-black/15 pt-4">
+      <dt className="text-[10px] uppercase tracking-[0.3em] text-black/60">
+        {label}
+      </dt>
+      <dd className="mt-2 text-black">{value}</dd>
     </div>
   );
 }

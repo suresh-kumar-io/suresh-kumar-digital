@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { CursorGlow } from "@/components/CursorGlow";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
@@ -15,14 +13,14 @@ import { Footer } from "@/components/sections/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Suresh Kumar — Product Designer & UI/UX Designer" },
+      { title: "Suresh Kumar — Senior UI/UX Designer & Network Engineer" },
       {
         name: "description",
         content:
-          "Portfolio of Suresh Kumar — Product & UI/UX Designer at Siemens with 4+ years crafting enterprise dashboards, design systems and security platforms.",
+          "Portfolio of Suresh Kumar — Senior UI/UX Designer and L3 Network Engineer at Siemens. Enterprise security software, design systems, and network operations.",
       },
-      { property: "og:title", content: "Suresh Kumar — Product Designer & UI/UX Designer" },
-      { property: "og:description", content: "Enterprise UX · Design Systems · Security Platforms · 4+ years at Siemens." },
+      { property: "og:title", content: "Suresh Kumar — Senior UI/UX Designer & Network Engineer" },
+      { property: "og:description", content: "Enterprise UX, design systems, and L3 network operations at Siemens." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -33,7 +31,7 @@ export const Route = createFileRoute("/")({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist:wght@400;500;600;700&display=swap",
       },
     ],
   }),
@@ -42,9 +40,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative">
-      <AnimatedBackground />
-      <CursorGlow />
+    <main className="relative bg-background text-foreground">
       <ScrollProgress />
       <Navbar />
       <Hero />

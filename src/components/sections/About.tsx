@@ -1,77 +1,68 @@
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const stats = [
-  { v: 4, s: "+", l: "Years Experience" },
-  { v: 25, s: "+", l: "Products Shipped" },
-  { v: 1, s: "", l: "Patent-Selected Concept" },
-  { v: 100, s: "%", l: "Recruiter Energy" },
+  { v: "4+", l: "Years designing enterprise software" },
+  { v: "25+", l: "Products and features shipped" },
+  { v: "50+", l: "L3 network tickets resolved" },
+  { v: "1", l: "Patent-filed AR concept" },
 ];
-
-function Counter({ to, suffix }: { to: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
-  const [n, setN] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    const start = performance.now();
-    const d = 1400;
-    const tick = (t: number) => {
-      const p = Math.min(1, (t - start) / d);
-      setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, to]);
-  return <span ref={ref}>{n}{suffix}</span>;
-}
 
 export function About() {
   return (
-    <section id="about" className="relative px-6 py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionLabel>01 · About</SectionLabel>
-        <div className="mt-6 grid gap-12 lg:grid-cols-[1.2fr_1fr]">
+    <section id="about" className="relative px-6 py-32 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <SectionLabel>01 — About</SectionLabel>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="font-display mt-8 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl md:text-6xl"
+        >
+          Engineering precision applied to enterprise product design.
+        </motion.h2>
+
+        <div className="mt-14 grid gap-16 md:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-xl space-y-5 text-base leading-relaxed text-black md:text-lg"
           >
-            <h2 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
-              From <span className="text-gradient-accent">CAD precision</span> to{" "}
-              <span className="text-gradient-accent">pixel-perfect product design</span>.
-            </h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-              <p>
-                I began my career as a Mechanical Engineer crafting CAD systems for global telecom and
-                structural projects — obsessed with how things fit, flow, and function.
-              </p>
-              <p>
-                That engineering mindset now drives my product design practice at{" "}
-                <span className="text-foreground">Siemens</span>, where I design enterprise dashboards,
-                workflow platforms, and scalable systems for{" "}
-                <span className="text-foreground">Siveillance Control</span> and{" "}
-                <span className="text-foreground">SiPass</span> — used by security teams across the globe.
-              </p>
-              <p>
-                I bridge structure and storytelling, engineering rigor and visual craft. The result is
-                interfaces that feel inevitable.
-              </p>
-            </div>
+            <p>
+              I began in mechanical CAD, delivering structural and telecom
+              projects for European and US clients. That discipline now shapes
+              how I approach product design.
+            </p>
+            <p>
+              At Siemens I design Siveillance Control and SiPass — enterprise
+              security platforms used by operators worldwide — and support L3
+              network operations for cRSP, IPsec, and Desigo connectivity.
+            </p>
+            <p>
+              I work across design and engineering to ship interfaces that are
+              clear, dependable, and built to scale.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((st, i) => (
+          <div className="grid grid-cols-2 gap-x-10 gap-y-10">
+            {stats.map((s, i) => (
               <motion.div
-                key={st.l}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass relative overflow-hidden rounded-2xl p-5"
+                key={s.l}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="border-t border-black/15 pt-5"
               >
-                <div className="font-display text-4xl font-semibold text-gradient-accent">
-                  <Counter to={st.v} suffix={st.s} />
+                <div className="font-display text-4xl font-semibold text-black md:text-5xl">
+                  {s.v}
                 </div>
-                <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{st.l}</div>
-                <div className="shimmer absolute inset-0 -z-10" />
+                <div className="mt-3 text-sm leading-snug text-black/70">
+                  {s.l}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -83,13 +74,8 @@ export function About() {
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }} transition={{ duration: 0.5 }}
-      className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-muted-foreground"
-    >
-      <span className="h-px w-8 bg-gradient-to-r from-[var(--cyan)] to-transparent" />
+    <div className="text-xs uppercase tracking-[0.3em] text-black">
       {children}
-    </motion.div>
+    </div>
   );
 }
