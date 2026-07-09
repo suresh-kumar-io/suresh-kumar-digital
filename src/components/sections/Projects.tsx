@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionLabel } from "./About";
-import siveillancePortal from "@/assets/siveillance-portal.jpg.asset.json";
+import conferenceRoomBooking from "@/assets/Dashboard_Page.png.asset.json";
 import securityDashboard1 from "@/assets/security-dashboard-1.png.asset.json";
 import scl6 from "@/assets/scl-Page_6.jpg.asset.json";
 import building3d1 from "@/assets/building-3d-1.png.asset.json";
@@ -20,16 +20,17 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: "siveillance",
-    title: "Siemens Siveillance Unified Portal",
-    tag: "Enterprise Security Platform",
+    id: "conference-room-booking",
+    title: "Conference Room Booking Application",
+    tag: "Workspace Management",
     year: "2024",
     challenge:
-      "Security operators managed distributed sites across fragmented tools, delaying critical decisions.",
+      "Teams struggled with room availability conflicts, limited visibility into booking trends, and no way to reserve on behalf of managers.",
     solution:
-      "Designed a unified command center with prioritized alerts, modular components, and a calmer information hierarchy.",
-    result: "Reduced operator decision time and lowered alert fatigue in production deployments.",
-    image: siveillancePortal.url,
+      "Designed an end-to-end web application with amenity selection, delegated booking for managers, and a 24-hour dashboard showing room status and trends.",
+    result:
+      "Covered complete UX/UI design and requirement implementation, streamlining reservations and improving occupancy visibility.",
+    image: conferenceRoomBooking.url,
     fit: "cover",
   },
   {
@@ -106,7 +107,7 @@ export function Projects() {
               className="grid gap-10 md:grid-cols-12 md:gap-12"
             >
               <div className="md:col-span-7">
-                <div className="relative aspect-[4/3] overflow-hidden border border-black/15 bg-[#DFDFD9]">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-black/15 bg-[#DFDFD9]">
                   <img
                     src={p.image}
                     alt={p.title}
@@ -150,3 +151,4 @@ function Row({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
+
