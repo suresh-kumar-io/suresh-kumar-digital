@@ -21,13 +21,12 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="font-display mt-8 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-6xl md:text-7xl"
         >
-          Available for senior design and network engineering roles.
+          Available for UI/UX design roles.
         </motion.h2>
 
         <p className="mt-8 max-w-2xl text-base leading-relaxed text-black md:text-lg">
-          Open to product design positions, freelance collaborations, and
-          conversations about enterprise UX or network operations. Replies
-          within 24 hours.
+          Open to UX research, UI designer, and product designer positions —
+          full-time or freelance. Replies within 24 hours.
         </p>
 
         <ul className="mt-14 max-w-3xl">
