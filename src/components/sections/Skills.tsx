@@ -11,12 +11,12 @@ const groups = [
     items: ["Dashboards", "Design Systems", "Information Architecture", "Workflow Design", "Responsive Design"],
   },
   {
-    t: "Tools",
-    items: ["Figma", "Adobe XD", "Revit", "AutoCAD", "SolidWorks", "Creo"],
+    t: "AI module",
+    items: ["Claude Design", "Make", "Lovable", "Vercel", "GitHub", "Agentic flow : Figma-to-GitHub Copilot"],
   },
   {
-    t: "Engineering",
-    items: ["BIM & CAD", "Structural Modelling", "PLM", "ASME / ANSI", "Technical Submittals", "AR & 3D Concepts"],
+    t: "Tools",
+    items: ["Figma", "Adobe XD", "Revit", "AutoCAD", "SolidWorks", "Creo"],
   },
   {
     t: "Collaboration",
