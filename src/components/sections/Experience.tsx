@@ -52,6 +52,28 @@ const items = [
       },
     ],
   },
+  {
+    co: "Technology Solutions2",
+    role: "Senior CAD Engineer",
+    when: "Feb 2021 — May 2022",
+    where: "Bengaluru, India",
+    points: [
+      "Partnered with European telecom clients on technical design and visualization.",
+      "Produced layouts, workflow diagrams, and equipment plans in AutoCAD.",
+      "Led design reviews and maintained delivery quality.",
+    ],
+  },
+  {
+    co: "ASE Structure Design",
+    role: "Junior CAD Engineer",
+    when: "Oct 2019 — Feb 2021",
+    where: "Chennai, India",
+    points: [
+      "Delivered US telecom projects with structural plans, elevations, and site layouts.",
+      "Built dynamic AutoCAD blocks and maintained a reusable component library.",
+      "Authored schematics and specifications for specialized telecom equipment.",
+    ],
+  },
 ];
 
 export function Experience() {
