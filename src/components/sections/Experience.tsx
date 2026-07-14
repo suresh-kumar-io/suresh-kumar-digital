@@ -82,7 +82,7 @@ export function Experience() {
       <div className="mx-auto max-w-7xl">
         <SectionLabel>04 — Experience</SectionLabel>
         <h2 className="font-display mt-8 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
-          UI/UX design at Siemens.
+          A career built across engineering, design, and networks.
         </h2>
 
         <div className="mt-16 space-y-12">
