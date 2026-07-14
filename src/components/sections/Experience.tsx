@@ -14,58 +14,6 @@ const items = [
       "Contributed to a patent-filed 3D building visualization concept with AR.",
     ],
   },
-  {
-    co: "Siemens Technology and Services",
-    role: "Engineering Solutions Projects",
-    when: "Current",
-    where: "Chennai, India",
-    points: [
-      "Deliver graphics commissioning for Siveillance Control using Siemens PISM and AutoCAD.",
-      "Design alarm and sensor visualization, mapping, and configuration for fire and safety systems.",
-      "Lead execution using parametric modeling and feature-based design.",
-      "Contribute to 3D BIM integration for visualization, surveillance, and fire-safety compliance.",
-      "Ensure compliance with European standards and customer requirements.",
-      "Developed an AR-enabled 3D BIM fire-protection concept selected for patent filing.",
-      "Own visualization engineering, attribute configuration, KML generation, and PDF export.",
-    ],
-  },
-  {
-    co: "Siemens Technology and Services",
-    role: "cRSP Services — L2 / L3 Network Support",
-    when: "Current",
-    where: "Remote · EMEA / US",
-    points: [
-      "Self-trained and transitioned into L3 networking within 60 days.",
-      "Specialize in IPsec, cRSP, BMSaaS, Desigo connectivity, and network diagnostics.",
-      "Resolved 50+ complex EMEA and US L3 tickets with zero escalations.",
-      "Led Scalance S615 onboarding during FortiGate migration projects.",
-      "Implemented and supported IPsec, cRSP, DCCaaS, and Desigo connectivity.",
-      "Authored troubleshooting playbooks and reusable automation for IPsec tunnel deployment.",
-      "Experienced in NAT, secure connectivity, diagnostics, and customer support operations.",
-    ],
-  },
-  {
-    co: "Technology Solutions2",
-    role: "Senior CAD Engineer",
-    when: "Feb 2021 — May 2022",
-    where: "Bengaluru, India",
-    points: [
-      "Partnered with European telecom clients on technical design and visualization.",
-      "Produced layouts, workflow diagrams, and equipment plans in AutoCAD.",
-      "Led design reviews and maintained delivery quality.",
-    ],
-  },
-  {
-    co: "ASE Structure Design",
-    role: "Junior CAD Engineer",
-    when: "Oct 2019 — Feb 2021",
-    where: "Chennai, India",
-    points: [
-      "Delivered US telecom projects with structural plans, elevations, and site layouts.",
-      "Built dynamic AutoCAD blocks and maintained a reusable component library.",
-      "Authored schematics and specifications for specialized telecom equipment.",
-    ],
-  },
 ];
 
 export function Experience() {
