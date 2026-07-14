@@ -36,8 +36,14 @@ export function Navbar() {
       className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-[#DFDFD9]/90 backdrop-blur"
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        <a href="#hero" className="font-display text-sm font-semibold tracking-tight text-black">
-          Suresh Kumar
+        <a
+          href="#hero"
+          className="group inline-flex items-center justify-center"
+          aria-label="Suresh Kumar — home"
+        >
+          <span className="font-display flex h-9 w-9 items-center justify-center border border-black text-base font-bold tracking-tight text-black transition-colors group-hover:border-black/60">
+            SK
+          </span>
         </a>
         <ul className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
