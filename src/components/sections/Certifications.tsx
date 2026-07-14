@@ -3,10 +3,10 @@ import { SectionLabel } from "./About";
 
 const certs = [
   { t: "Google UX Design", by: "Google" },
-  { t: "Foundations of UI & UX Design", by: "Coursera" },
-  { t: "Start the UX Design Process", by: "Coursera" },
-  { t: "Build Wireframes & Low-Fi Prototypes", by: "Coursera" },
-  { t: "Conduct UX Research & Test Early Concepts", by: "Coursera" },
+  { t: "Foundations of UI & UX Design", by: "Google" },
+  { t: "Start the UX Design Process", by: "Google" },
+  { t: "Build Wireframes & Low-Fi Prototypes", by: "Google" },
+  { t: "Conduct UX Research & Test Early Concepts", by: "Google" },
   { t: "Professional in Product Design & Analysis", by: "CADD Center" },
   { t: "Plant Design Management System", by: "CADD Center" },
 ];
