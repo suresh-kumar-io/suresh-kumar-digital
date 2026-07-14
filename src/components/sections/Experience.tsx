@@ -8,10 +8,48 @@ const items = [
     when: "May 2022 — Present",
     where: "Chennai, India",
     points: [
-      "Design enterprise B2B and B2C interfaces for Siveillance Control and SiPass.",
-      "Ship dashboards, ordering workflows, and customer-management surfaces used in production.",
-      "Build interactive prototypes in Figma and align product, engineering, and stakeholders.",
-      "Contributed to a patent-filed 3D building visualization concept with AR.",
+      "Led end-to-end UI/UX for enterprise SaaS platforms (Siveillance Control, SiPass), translating complex requirements into user flows and high-fidelity prototypes.",
+      "Designed B2B/B2C dashboards and workflows that reduced navigation friction and improved task completion.",
+      "Applied AI-assisted tools to accelerate ideation, run UX audits, and conduct competitive analysis.",
+      "Partnered with stakeholders to present, iterate, and align design decisions with business outcomes.",
+      "Built scalable Figma design systems using auto-layout, components, and tokens to ensure consistency across products.",
+      "Enforced accessibility standards (WCAG contrast ratios, keyboard navigation, inclusive patterns).",
+      "Co-invented an AR/BIM-based security visualization solution currently under patent filing.",
+      "Worked within Agile teams, balancing multiple design workstreams across concurrent releases.",
+    ],
+    products: [
+      {
+        name: "Conference Room Booking Application",
+        lines: [
+          "Designed a full-scale booking platform to resolve scheduling conflicts, limited room visibility, and delegation gaps.",
+          "Shipped manager-delegated booking, amenity-based filtering, and a real-time 24-hour occupancy dashboard.",
+          "Streamlined reservations, improved resource utilization visibility, and supported efficient workplace collaboration.",
+        ],
+      },
+      {
+        name: "Software Compatibility & Lifecycle Platform",
+        lines: [
+          "Consolidated fragmented regional admin workflows into a unified, scalable platform.",
+          "Delivered a centralized customer and ordering hub with intelligent defaults and simplified onboarding.",
+          "Reduced task complexity and accelerated onboarding for global administrators.",
+        ],
+      },
+      {
+        name: "Siemens Security Dashboard",
+        lines: [
+          "Designed a multi-tenant security intelligence dashboard unifying KPIs, alerts, and threat monitoring.",
+          "Built modular UI patterns, deep drill-down navigation, and high-contrast dark-mode visualizations for control rooms.",
+          "Adopted as the reference interface for stakeholder reviews of portfolio-wide security posture.",
+        ],
+      },
+      {
+        name: "AI-Powered Security Dashboard (Concept / Innovation)",
+        lines: [
+          "Conceptualized and prototyped an AI-assisted threat triage experience for industrial cybersecurity analysts.",
+          "Designed summarized incident views and one-click response playbooks to speed up decision-making.",
+          "Showcased at an internal innovation event as a forward-looking design capability.",
+        ],
+      },
     ],
   },
 ];
@@ -46,7 +84,7 @@ export function Experience() {
                   {it.co} · {it.where}
                 </div>
               </div>
-              <div className="md:col-span-8">
+              <div className="md:col-span-8 space-y-10">
                 <ul className="space-y-3 text-sm leading-relaxed text-black">
                   {it.points.map((p) => (
                     <li key={p} className="flex gap-3">
@@ -55,6 +93,29 @@ export function Experience() {
                     </li>
                   ))}
                 </ul>
+
+                {it.products && it.products.length > 0 && (
+                  <div className="space-y-8">
+                    <div className="text-[10px] uppercase tracking-[0.3em] text-black/60">
+                      Selected Products
+                    </div>
+                    {it.products.map((prod) => (
+                      <div key={prod.name} className="space-y-3">
+                        <h4 className="font-display text-base font-semibold text-black">
+                          {prod.name}
+                        </h4>
+                        <ul className="space-y-2 text-sm leading-relaxed text-black/80">
+                          {prod.lines.map((line) => (
+                            <li key={line} className="flex gap-3">
+                              <span className="mt-2 h-px w-4 shrink-0 bg-black/40" />
+                              <span>{line}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}
