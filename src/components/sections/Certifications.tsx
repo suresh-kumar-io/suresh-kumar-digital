@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { SectionLabel } from "./About";
 
 const certs = [
+  { t: "Google UX Design", by: "Google" },
   { t: "Foundations of UI & UX Design", by: "Coursera" },
   { t: "Start the UX Design Process", by: "Coursera" },
   { t: "Build Wireframes & Low-Fi Prototypes", by: "Coursera" },
