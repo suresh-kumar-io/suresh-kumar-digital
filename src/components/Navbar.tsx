@@ -41,7 +41,7 @@ export function Navbar() {
           className="group inline-flex items-center justify-center"
           aria-label="Suresh Kumar — home"
         >
-          <span className="font-display flex h-9 w-9 items-center justify-center border border-black text-base font-bold tracking-tight text-black transition-colors group-hover:bg-black group-hover:text-[#DFDFD9]">
+          <span className="font-display flex h-9 w-9 items-center justify-center border border-black text-base font-bold tracking-tight text-black transition-colors group-hover:border-black/60">
             SK
           </span>
         </a>
