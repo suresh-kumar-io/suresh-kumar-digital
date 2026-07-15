@@ -158,14 +158,19 @@ export function Projects() {
 function Carousel({ images, alt, fit }: { images: string[]; alt: string; fit?: "cover" | "contain" }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [tick, setTick] = useState(0);
 
   useEffect(() => {
     if (paused) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 3200);
+    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 4000);
     return () => clearInterval(id);
-  }, [paused, images.length]);
+  }, [paused, images.length, tick]);
 
-  const go = (n: number) => setIndex((n + images.length) % images.length);
+  const go = (n: number) => {
+    setIndex((n + images.length) % images.length);
+    setTick((t) => t + 1);
+  };
+
 
   return (
     <div
@@ -173,21 +178,28 @@ function Carousel({ images, alt, fit }: { images: string[]; alt: string; fit?: "
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence initial={false}>
         <motion.img
           key={index}
           src={images[index]}
           alt={`${alt} — ${index + 1}`}
-          loading="lazy"
-          initial={{ opacity: 0, scale: 1.02 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.99 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className={`absolute inset-0 h-full w-full ${
             fit === "contain" ? "object-contain p-4" : "object-cover"
           }`}
         />
       </AnimatePresence>
+
+      {/* Preload next/previous images to eliminate load buffer */}
+      <div className="hidden">
+        {images.map((src) => (
+          <img key={src} src={src} alt="" aria-hidden />
+        ))}
+      </div>
+
 
       <button
         type="button"
