@@ -27,7 +27,7 @@ const projects: Project[] = [
     challenge:
       "Teams struggled with room availability conflicts, limited visibility into booking trends, and no way to reserve on behalf of managers.",
     solution:
-      "Designed an end-to-end web application with amenity selection, delegated booking for managers, and a 24-hour dashboard showing room status and trends.",
+      "Designed an end-to-end web application with amenity selection, delegated booking for managers, and a 24-hour dashboard showing room status and trends. The experience was built entirely through an agentic AI workflow combining Figma, Make, and Copilot-assisted prototyping to accelerate research, iteration, and delivery.",
     result:
       "Covered complete UX/UI design and requirement implementation, streamlining reservations and improving occupancy visibility.",
     image: conferenceRoomBooking.url,
