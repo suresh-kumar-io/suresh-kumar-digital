@@ -158,14 +158,19 @@ export function Projects() {
 function Carousel({ images, alt, fit }: { images: string[]; alt: string; fit?: "cover" | "contain" }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [tick, setTick] = useState(0);
 
   useEffect(() => {
     if (paused) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 3200);
+    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 4000);
     return () => clearInterval(id);
-  }, [paused, images.length]);
+  }, [paused, images.length, tick]);
 
-  const go = (n: number) => setIndex((n + images.length) % images.length);
+  const go = (n: number) => {
+    setIndex((n + images.length) % images.length);
+    setTick((t) => t + 1);
+  };
+
 
   return (
     <div
