@@ -1,13 +1,20 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { SectionLabel } from "./About";
 import conferenceRoomBooking from "@/assets/Dashboard_Page.png.asset.json";
 import securityDashboard1 from "@/assets/security-dashboard-1.png.asset.json";
-import scl6 from "@/assets/scl-Page_6.jpg.asset.json";
 import building3d1 from "@/assets/building-3d-1.png.asset.json";
 import aiDashboard from "@/assets/ai-dashboard.png.asset.json";
+import scl6 from "@/assets/Page_6-2.jpg.asset.json";
+import scl7 from "@/assets/Page_7-2.jpg.asset.json";
+import scl8 from "@/assets/Page_8-2.jpg.asset.json";
+import scl9 from "@/assets/Page_9-2.jpg.asset.json";
+import scl10 from "@/assets/Page_10-2.jpg.asset.json";
+import scl11 from "@/assets/Page_11-2.jpg.asset.json";
 
 type Project = {
   image: string;
+  images?: string[];
   id: string;
   title: string;
   tag: string;
@@ -17,6 +24,8 @@ type Project = {
   result: string;
   fit?: "cover" | "contain";
 };
+
+const sclImages = [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url];
 
 const projects: Project[] = [
   {
@@ -43,7 +52,8 @@ const projects: Project[] = [
     solution:
       "Consolidated the experience into a single source of truth with intelligent defaults and a scalable customer hub.",
     result: "Cut task completion time and simplified onboarding for regional administrators.",
-    image: scl6.url,
+    image: sclImages[0],
+    images: sclImages,
     fit: "contain",
   },
   {
@@ -107,16 +117,20 @@ export function Projects() {
               className="grid gap-10 md:grid-cols-12 md:gap-12"
             >
               <div className="md:col-span-7">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-black/15 bg-[#DFDFD9]">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    loading="lazy"
-                    className={`absolute inset-0 h-full w-full ${
-                      p.fit === "contain" ? "object-contain p-4" : "object-cover"
-                    }`}
-                  />
-                </div>
+                {p.images && p.images.length > 1 ? (
+                  <Carousel images={p.images} alt={p.title} fit={p.fit} />
+                ) : (
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-black/15 bg-[#DFDFD9]">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      className={`absolute inset-0 h-full w-full ${
+                        p.fit === "contain" ? "object-contain p-4" : "object-cover"
+                      }`}
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="md:col-span-5">
@@ -141,6 +155,74 @@ export function Projects() {
   );
 }
 
+function Carousel({ images, alt, fit }: { images: string[]; alt: string; fit?: "cover" | "contain" }) {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 3200);
+    return () => clearInterval(id);
+  }, [paused, images.length]);
+
+  const go = (n: number) => setIndex((n + images.length) % images.length);
+
+  return (
+    <div
+      className="relative aspect-[4/3] overflow-hidden rounded-lg border border-black/15 bg-[#DFDFD9]"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={index}
+          src={images[index]}
+          alt={`${alt} — ${index + 1}`}
+          loading="lazy"
+          initial={{ opacity: 0, scale: 1.02 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.99 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={`absolute inset-0 h-full w-full ${
+            fit === "contain" ? "object-contain p-4" : "object-cover"
+          }`}
+        />
+      </AnimatePresence>
+
+      <button
+        type="button"
+        aria-label="Previous slide"
+        onClick={() => go(index - 1)}
+        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-xs text-white backdrop-blur-sm transition hover:bg-black/80"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        aria-label="Next slide"
+        onClick={() => go(index + 1)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-xs text-white backdrop-blur-sm transition hover:bg-black/80"
+      >
+        ›
+      </button>
+
+      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Go to slide ${i + 1}`}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all ${
+              i === index ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-black/15 pt-4">
@@ -151,4 +233,3 @@ function Row({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
-
