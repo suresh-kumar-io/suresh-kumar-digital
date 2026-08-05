@@ -1,6 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { SectionLabel } from "./About";
+import { Lightbox } from "./Lightbox";
 import conferenceRoomBooking from "@/assets/Dashboard_Page.png.asset.json";
 import securityDashboard1 from "@/assets/security-dashboard-1.png.asset.json";
 import building3d1 from "@/assets/building-3d-1.png.asset.json";
@@ -11,6 +12,8 @@ import scl8 from "@/assets/Page_8-2.jpg.asset.json";
 import scl9 from "@/assets/Page_9-2.jpg.asset.json";
 import scl10 from "@/assets/Page_10-2.jpg.asset.json";
 import scl11 from "@/assets/Page_11-2.jpg.asset.json";
+
+type Metric = { label: string; value: string };
 
 type Project = {
   image: string;
@@ -23,9 +26,17 @@ type Project = {
   solution: string;
   result: string;
   fit?: "cover" | "contain";
+  metrics: Metric[];
 };
 
 const sclImages = [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url];
+
+const defaultMetrics: Metric[] = [
+  { label: "Role", value: "UI/UX Designer" },
+  { label: "Product Stage", value: "0 → 1" },
+  { label: "NPS Score", value: "9.5" },
+  { label: "Revenue Growth", value: "+23%" },
+];
 
 const projects: Project[] = [
   {
@@ -41,6 +52,7 @@ const projects: Project[] = [
       "Covered complete UX/UI design and requirement implementation, streamlining reservations and improving occupancy visibility.",
     image: conferenceRoomBooking.url,
     fit: "cover",
+    metrics: defaultMetrics,
   },
   {
     id: "sipass",
@@ -55,6 +67,7 @@ const projects: Project[] = [
     image: sclImages[0],
     images: sclImages,
     fit: "contain",
+    metrics: defaultMetrics,
   },
   {
     id: "security-dashboard",
@@ -68,6 +81,7 @@ const projects: Project[] = [
     result: "Adopted in customer reviews as the reference view for portfolio-wide security posture.",
     image: securityDashboard1.url,
     fit: "contain",
+    metrics: defaultMetrics,
   },
   {
     id: "3d-building",
@@ -81,6 +95,7 @@ const projects: Project[] = [
     result: "Selected for Siemens patent consideration as a next-generation situational awareness concept.",
     image: building3d1.url,
     fit: "cover",
+    metrics: defaultMetrics,
   },
   {
     id: "ai-dashboard",
@@ -94,6 +109,7 @@ const projects: Project[] = [
     result: "Presented at an internal Siemens innovation event as a forward-looking capability.",
     image: aiDashboard.url,
     fit: "contain",
+    metrics: defaultMetrics,
   },
 ];
 
@@ -117,20 +133,14 @@ export function Projects() {
               className="grid gap-10 md:grid-cols-12 md:gap-12"
             >
               <div className="md:col-span-7">
-                {p.images && p.images.length > 1 ? (
-                  <Carousel images={p.images} alt={p.title} fit={p.fit} />
-                ) : (
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-black/15 bg-[#DFDFD9]">
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      loading="lazy"
-                      className={`absolute inset-0 h-full w-full ${
-                        p.fit === "contain" ? "object-contain p-4" : "object-cover"
-                      }`}
-                    />
-                  </div>
-                )}
+                <MetricsRow metrics={p.metrics} />
+                <div className="mt-6">
+                  <Gallery
+                    images={p.images && p.images.length > 1 ? p.images : [p.image]}
+                    alt={p.title}
+                    fit={p.fit}
+                  />
+                </div>
               </div>
 
               <div className="md:col-span-5">
@@ -155,83 +165,146 @@ export function Projects() {
   );
 }
 
-function Carousel({ images, alt, fit }: { images: string[]; alt: string; fit?: "cover" | "contain" }) {
+function MetricsRow({ metrics }: { metrics: Metric[] }) {
+  return (
+    <dl className="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-black/15 pt-6 sm:grid-cols-4">
+      {metrics.map((m) => (
+        <div key={m.label} className="min-w-0">
+          <dt className="text-[10px] uppercase tracking-[0.3em] text-black/60">{m.label}</dt>
+          <dd className="font-display mt-2 text-base font-semibold leading-snug text-black sm:text-lg">
+            {m.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function Gallery({
+  images,
+  alt,
+  fit,
+}: {
+  images: string[];
+  alt: string;
+  fit?: "cover" | "contain";
+}) {
+  const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [tick, setTick] = useState(0);
+  const [zoom, setZoom] = useState(false);
+  const dragged = useRef(false);
+  const multi = images.length > 1;
 
   useEffect(() => {
-    if (paused) return;
+    if (!multi || paused || zoom) return;
     const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 4000);
     return () => clearInterval(id);
-  }, [paused, images.length, tick]);
+  }, [paused, zoom, multi, images.length, tick]);
 
   const go = (n: number) => {
     setIndex((n + images.length) % images.length);
     setTick((t) => t + 1);
   };
 
-
   return (
-    <div
-      className="relative aspect-[4/3] overflow-hidden rounded-lg border border-black/15 bg-[#DFDFD9]"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <AnimatePresence initial={false}>
-        <motion.img
-          key={index}
-          src={images[index]}
-          alt={`${alt} — ${index + 1}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className={`absolute inset-0 h-full w-full ${
-            fit === "contain" ? "object-contain p-4" : "object-cover"
-          }`}
+    <>
+      <div
+        className="relative aspect-[4/3] select-none overflow-hidden rounded-lg border border-black/15 bg-[#DFDFD9]"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <motion.div
+          className="flex h-full w-full cursor-grab active:cursor-grabbing"
+          drag={multi && !reduce ? "x" : false}
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.18}
+          onDragStart={() => {
+            dragged.current = true;
+            setPaused(true);
+          }}
+          onDragEnd={(_, info) => {
+            if (info.offset.x < -60 || info.velocity.x < -400) go(index + 1);
+            else if (info.offset.x > 60 || info.velocity.x > 400) go(index - 1);
+            setTimeout(() => (dragged.current = false), 0);
+          }}
+          animate={{ x: `-${index * 100}%` }}
+          transition={
+            reduce ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 32 }
+          }
+        >
+          {images.map((src, i) => (
+            <button
+              key={src}
+              type="button"
+              aria-label={`Enlarge ${alt} image ${i + 1}`}
+              onClick={() => {
+                if (dragged.current) return;
+                setIndex(i);
+                setZoom(true);
+              }}
+              className="h-full w-full shrink-0 grow-0 basis-full"
+            >
+              <img
+                src={src}
+                alt={`${alt} — ${i + 1}`}
+                loading="lazy"
+                draggable={false}
+                className={`pointer-events-none h-full w-full ${
+                  fit === "contain" ? "object-contain p-4" : "object-cover"
+                }`}
+              />
+            </button>
+          ))}
+        </motion.div>
+
+        {multi && (
+          <>
+            <button
+              type="button"
+              aria-label="Previous slide"
+              onClick={() => go(index - 1)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-xs text-white backdrop-blur-sm transition hover:bg-black/80"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              aria-label="Next slide"
+              onClick={() => go(index + 1)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-xs text-white backdrop-blur-sm transition hover:bg-black/80"
+            >
+              ›
+            </button>
+
+            <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Go to slide ${i + 1}`}
+                  onClick={() => go(i)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === index ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {zoom && (
+        <Lightbox
+          images={images}
+          index={index}
+          alt={alt}
+          onClose={() => setZoom(false)}
+          onIndexChange={setIndex}
         />
-      </AnimatePresence>
-
-      {/* Preload next/previous images to eliminate load buffer */}
-      <div className="hidden">
-        {images.map((src) => (
-          <img key={src} src={src} alt="" aria-hidden />
-        ))}
-      </div>
-
-
-      <button
-        type="button"
-        aria-label="Previous slide"
-        onClick={() => go(index - 1)}
-        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-xs text-white backdrop-blur-sm transition hover:bg-black/80"
-      >
-        ‹
-      </button>
-      <button
-        type="button"
-        aria-label="Next slide"
-        onClick={() => go(index + 1)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-xs text-white backdrop-blur-sm transition hover:bg-black/80"
-      >
-        ›
-      </button>
-
-      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => setIndex(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
