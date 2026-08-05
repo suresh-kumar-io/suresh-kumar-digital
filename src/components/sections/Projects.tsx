@@ -67,7 +67,12 @@ const projects: Project[] = [
     image: sclImages[0],
     images: sclImages,
     fit: "contain",
-    metrics: defaultMetrics,
+    metrics: [
+      { label: "Role", value: "UI/UX Designer" },
+      { label: "Product Stage", value: "0 → 1" },
+      { label: "NPS Score", value: "8.0" },
+      { label: "Revenue Growth", value: "+20%" },
+    ],
   },
   {
     id: "security-dashboard",
@@ -81,7 +86,13 @@ const projects: Project[] = [
     result: "Adopted in customer reviews as the reference view for portfolio-wide security posture.",
     image: securityDashboard1.url,
     fit: "contain",
-    metrics: defaultMetrics,
+    metrics: [
+      { label: "Role", value: "UI Designer" },
+      { label: "Product Stage", value: "Enhancement" },
+      { label: "NPS Score", value: "8.0" },
+      { label: "Revenue Growth", value: "+53%" },
+      { label: "Customer", value: "HCL Tech" },
+    ],
   },
   {
     id: "3d-building",
@@ -95,7 +106,12 @@ const projects: Project[] = [
     result: "Selected for Siemens patent consideration as a next-generation situational awareness concept.",
     image: building3d1.url,
     fit: "cover",
-    metrics: defaultMetrics,
+    metrics: [
+      { label: "Role", value: "Innovator" },
+      { label: "Product Stage", value: "POC" },
+      { label: "NPS Score", value: "9" },
+      { label: "Revenue Growth", value: "Patent filed" },
+    ],
   },
   {
     id: "ai-dashboard",
@@ -109,7 +125,12 @@ const projects: Project[] = [
     result: "Presented at an internal Siemens innovation event as a forward-looking capability.",
     image: aiDashboard.url,
     fit: "contain",
-    metrics: defaultMetrics,
+    metrics: [
+      { label: "Role", value: "UX Research" },
+      { label: "Product Stage", value: "0 → 1" },
+      { label: "NPS Score", value: "8.0" },
+      { label: "Revenue Growth", value: "+76%" },
+    ],
   },
 ];
 
