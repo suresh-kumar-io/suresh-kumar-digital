@@ -83,8 +83,9 @@ const projects: Project[] = [
       "Designed an end-to-end web application with amenity selection, delegated booking for managers, and a 24-hour dashboard showing room status and trends. The experience was built entirely through an agentic AI workflow combining Figma, Make, and Copilot-assisted prototyping to accelerate research, iteration, and delivery.",
     result:
       "Covered complete UX/UI design and requirement implementation, streamlining reservations and improving occupancy visibility.",
-    image: conferenceRoomBooking.url,
-    fit: "cover",
+    image: crbImages[0],
+    images: crbImages,
+    fit: "contain",
     metrics: defaultMetrics,
   },
   {
