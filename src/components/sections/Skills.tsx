@@ -32,7 +32,7 @@ export function Skills() {
   return (
     <section id="skills" className="relative border-t border-black/10 px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
-        <SectionLabel>02 — Capabilities</SectionLabel>
+        <SectionLabel>03 — Capabilities</SectionLabel>
         <h2 className="font-display mt-8 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
           A multi-disciplinary practice spanning design, engineering, and networks.
         </h2>
