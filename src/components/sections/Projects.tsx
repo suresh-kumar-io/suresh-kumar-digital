@@ -12,6 +12,11 @@ import scl8 from "@/assets/Page_8-2.jpg.asset.json";
 import scl9 from "@/assets/Page_9-2.jpg.asset.json";
 import scl10 from "@/assets/Page_10-2.jpg.asset.json";
 import scl11 from "@/assets/Page_11-2.jpg.asset.json";
+import crbRooms from "@/assets/crb-Room_Page.png.asset.json";
+import crbBooking from "@/assets/crb-Booking_Modal.png.asset.json";
+import crbCalendar from "@/assets/crb-Calendar_Page.png.asset.json";
+import crbMyBookings from "@/assets/crb-My_Bookings.png.asset.json";
+import crbAdmin from "@/assets/crb-Admin_Page.png.asset.json";
 
 type Metric = { label: string; value: string };
 
