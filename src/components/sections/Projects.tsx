@@ -138,7 +138,7 @@ export function Projects() {
   return (
     <section id="work" className="relative border-t border-black/10 px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
-        <SectionLabel>03 — Selected Work</SectionLabel>
+        <SectionLabel>02 — Case Study</SectionLabel>
         <h2 className="font-display mt-8 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
           Case studies from enterprise security and operations.
         </h2>
