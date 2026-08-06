@@ -51,10 +51,14 @@ export function Navbar() {
               <a
                 href={`#${l.id}`}
                 className={`text-sm text-black transition-opacity ${
-                  active === l.id ? "opacity-100" : "opacity-60 hover:opacity-100"
+                  l.id === "work"
+                    ? "case-study-cta"
+                    : active === l.id
+                      ? "opacity-100"
+                      : "opacity-60 hover:opacity-100"
                 }`}
               >
-                {l.label}
+                {l.id === "work" ? "Case studies" : l.label}
               </a>
             </li>
           ))}

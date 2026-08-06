@@ -85,6 +85,15 @@
   ::-webkit-scrollbar-thumb { background: #000; border-radius: 999px; }
 }
 
+@keyframes case-study-glow {
+  0%, 100% {
+    text-shadow: 0 0 0 color-mix(in oklab, var(--primary) 0%, transparent);
+  }
+  50% {
+    text-shadow: 0 0 12px color-mix(in oklab, var(--primary) 28%, transparent);
+  }
+}
+
 @layer utilities {
   .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
   .glass { background: transparent; border: 1px solid var(--border); }
@@ -98,4 +107,33 @@
   .anim-pulse-glow { animation: none; }
   .shimmer { background: transparent; animation: none; }
   .anim-gradient { animation: none; background-size: auto; }
+
+  .case-study-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    animation: case-study-glow 2.4s ease-in-out infinite;
+    font-weight: 600;
+  }
+
+  .case-study-cta::after {
+    position: absolute;
+    right: 0;
+    bottom: -0.35rem;
+    left: 0;
+    height: 1px;
+    background: var(--primary);
+    content: "";
+    transform-origin: left;
+    transition: transform 200ms ease;
+  }
+
+  .case-study-cta:hover::after {
+    transform: scaleX(0.72);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-study-cta { animation: none; }
+    .case-study-cta::after { transition: none; }
+  }
 }
