@@ -40,6 +40,25 @@ const defaultMetrics: Metric[] = [
 
 const projects: Project[] = [
   {
+    id: "ai-dashboard",
+    title: "AI Security Dashboard",
+    tag: "Innovation Concept",
+    year: "2024",
+    challenge:
+      "Analysts needed proactive surfacing of anomalies in industrial security telemetry.",
+    solution:
+      "Prototyped an AI-assisted triage surface with summarized incidents and one-click playbooks.",
+    result: "Presented at an internal Siemens innovation event as a forward-looking capability.",
+    image: aiDashboard.url,
+    fit: "contain",
+    metrics: [
+      { label: "Role", value: "UX Research" },
+      { label: "Product Stage", value: "0 → 1" },
+      { label: "NPS Score", value: "8.0" },
+      { label: "Revenue Growth", value: "+76%" },
+    ],
+  },
+  {
     id: "conference-room-booking",
     title: "Conference Room Booking Application",
     tag: "Workspace Management",
@@ -113,32 +132,13 @@ const projects: Project[] = [
       { label: "Revenue Growth", value: "Patent filed" },
     ],
   },
-  {
-    id: "ai-dashboard",
-    title: "AI Security Dashboard",
-    tag: "Innovation Concept",
-    year: "2024",
-    challenge:
-      "Analysts needed proactive surfacing of anomalies in industrial security telemetry.",
-    solution:
-      "Prototyped an AI-assisted triage surface with summarized incidents and one-click playbooks.",
-    result: "Presented at an internal Siemens innovation event as a forward-looking capability.",
-    image: aiDashboard.url,
-    fit: "contain",
-    metrics: [
-      { label: "Role", value: "UX Research" },
-      { label: "Product Stage", value: "0 → 1" },
-      { label: "NPS Score", value: "8.0" },
-      { label: "Revenue Growth", value: "+76%" },
-    ],
-  },
 ];
 
 export function Projects() {
   return (
     <section id="work" className="relative border-t border-black/10 px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
-        <SectionLabel>03 — Selected Work</SectionLabel>
+        <SectionLabel>02 — Case Study</SectionLabel>
         <h2 className="font-display mt-8 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
           Case studies from enterprise security and operations.
         </h2>
