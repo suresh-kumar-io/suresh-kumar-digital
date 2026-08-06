@@ -36,6 +36,15 @@ type Project = {
 
 const sclImages = [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url];
 
+const crbImages = [
+  conferenceRoomBooking.url,
+  crbRooms.url,
+  crbBooking.url,
+  crbCalendar.url,
+  crbMyBookings.url,
+  crbAdmin.url,
+];
+
 const defaultMetrics: Metric[] = [
   { label: "Role", value: "UI/UX Designer" },
   { label: "Product Stage", value: "0 → 1" },
