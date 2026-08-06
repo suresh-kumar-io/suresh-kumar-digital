@@ -12,6 +12,11 @@ import scl8 from "@/assets/Page_8-2.jpg.asset.json";
 import scl9 from "@/assets/Page_9-2.jpg.asset.json";
 import scl10 from "@/assets/Page_10-2.jpg.asset.json";
 import scl11 from "@/assets/Page_11-2.jpg.asset.json";
+import crbRooms from "@/assets/crb-Room_Page.png.asset.json";
+import crbBooking from "@/assets/crb-Booking_Modal.png.asset.json";
+import crbCalendar from "@/assets/crb-Calendar_Page.png.asset.json";
+import crbMyBookings from "@/assets/crb-My_Bookings.png.asset.json";
+import crbAdmin from "@/assets/crb-Admin_Page.png.asset.json";
 
 type Metric = { label: string; value: string };
 
@@ -30,6 +35,15 @@ type Project = {
 };
 
 const sclImages = [scl6.url, scl7.url, scl8.url, scl9.url, scl10.url, scl11.url];
+
+const crbImages = [
+  conferenceRoomBooking.url,
+  crbRooms.url,
+  crbBooking.url,
+  crbCalendar.url,
+  crbMyBookings.url,
+  crbAdmin.url,
+];
 
 const defaultMetrics: Metric[] = [
   { label: "Role", value: "UI/UX Designer" },
@@ -69,8 +83,9 @@ const projects: Project[] = [
       "Designed an end-to-end web application with amenity selection, delegated booking for managers, and a 24-hour dashboard showing room status and trends. The experience was built entirely through an agentic AI workflow combining Figma, Make, and Copilot-assisted prototyping to accelerate research, iteration, and delivery.",
     result:
       "Covered complete UX/UI design and requirement implementation, streamlining reservations and improving occupancy visibility.",
-    image: conferenceRoomBooking.url,
-    fit: "cover",
+    image: crbImages[0],
+    images: crbImages,
+    fit: "contain",
     metrics: defaultMetrics,
   },
   {
